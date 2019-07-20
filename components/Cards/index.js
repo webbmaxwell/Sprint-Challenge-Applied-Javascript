@@ -18,12 +18,25 @@
 //
 // Create a card for each of the articles and add the card to the DOM.
 
+// const topicsArray = [
+//   "bootstrap",
+//   "javascript",
+//   "jquery",
+// ]
+
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
   .then(response => {
-    // console.log(response)
+    let articleData = response.data.articles//.bootstrap;
+    // console.log(articleData);
+    let cardContainer = document.querySelector('.cards-container');
+    let topicArray = Object.keys(articleData);
+    console.log(topicArray);
+    topicArray.forEach(item => {
+      cardContainer.appendChild(cardMaker(articleData.item))
+    })
   })
   .catch(err => {
-    // console.log('Failed to retrieve articles: ', err)
+    console.log('Failed to retrieve articles: ', err)
   })
 
 function cardMaker(obj) {
@@ -32,7 +45,7 @@ function cardMaker(obj) {
 
   const headline = document.createElement('div');
   headline.classList.add('headline');
-  headline.innerHTML = `${obj.data.article.headline}`;
+  headline.innerHTML = `${obj.headline}`;
   cardDiv.appendChild(headline);
 
   const author = document.createElement('div');
@@ -44,11 +57,12 @@ function cardMaker(obj) {
   author.appendChild(imgContainer);
 
   const authorImg = document.createElement('img');
-  authorImg.setAttribute('src', `${obj.data.article.authorPhoto}`);
+  authorImg.setAttribute('src', `${obj.authorPhoto}`);
   imgContainer.appendChild(authorImg);
 
   const authorName = document.createElement('span');
-  authorName.innerHTML = `By ${obj.data.article.authorName}`;
+  authorName.innerHTML = `By ${obj.authorName}`;
+  author.appendChild(authorName)
 
   return cardDiv
 
