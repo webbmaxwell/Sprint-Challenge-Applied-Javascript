@@ -24,20 +24,86 @@
 //   "jquery",
 // ]
 
-axios.get('https://lambda-times-backend.herokuapp.com/articles')
-  .then(response => {
-    let articleData = response.data.articles//.bootstrap;
-    // console.log(articleData);
-    let cardContainer = document.querySelector('.cards-container');
-    let topicArray = Object.keys(articleData);
-    console.log(topicArray);
-    topicArray.forEach(item => {
-      cardContainer.appendChild(cardMaker(articleData.item))
+// axios.get('https://lambda-times-backend.herokuapp.com/articles')
+//   .then(response => {
+//     let articleData = response.data.articles//.bootstrap;
+//     console.log(articleData);
+//     let cardContainer = document.querySelector('.cards-container');
+//     let topicArray = Object.keys(articleData);
+//     console.log(topicArray);
+//     topicArray.forEach(item => {
+//       console.log(articleData.item)               //this doesn't work
+//       cardContainer.appendChild(cardMaker(articleData.item))
+//     })
+//   })
+//   .catch(err => {
+//     console.log('Failed to retrieve articles: ', err)
+//   })
+
+  axios.get('https://lambda-times-backend.herokuapp.com/articles')
+    .then(response => {
+      let articleData = response.data.articles.bootstrap;
+      console.log(articleData);
+      let cardContainer = document.querySelector('.cards-container');
+      articleData.forEach(item => {
+        cardContainer.appendChild(cardMaker(item));
+      })
     })
-  })
-  .catch(err => {
-    console.log('Failed to retrieve articles: ', err)
-  })
+    .catch(err => {
+      console.log('Failed to retrieve articles: ', err)
+    });
+
+  axios.get('https://lambda-times-backend.herokuapp.com/articles')
+    .then(response => {
+      let articleData = response.data.articles.javascript;
+      console.log(articleData);
+      let cardContainer = document.querySelector('.cards-container');
+      articleData.forEach(item => {
+        cardContainer.appendChild(cardMaker(item));
+      })
+    })
+    .catch(err => {
+      console.log('Failed to retrieve articles: ', err)
+    });
+
+  axios.get('https://lambda-times-backend.herokuapp.com/articles')
+    .then(response => {
+      let articleData = response.data.articles.jquery;
+      console.log(articleData);
+      let cardContainer = document.querySelector('.cards-container');
+      articleData.forEach(item => {
+        cardContainer.appendChild(cardMaker(item));
+      })
+    })
+    .catch(err => {
+      console.log('Failed to retrieve articles: ', err)
+    });
+
+  axios.get('https://lambda-times-backend.herokuapp.com/articles')
+    .then(response => {
+      let articleData = response.data.articles.technology;
+      console.log(articleData);
+      let cardContainer = document.querySelector('.cards-container');
+      articleData.forEach(item => {
+        cardContainer.appendChild(cardMaker(item));
+      })
+    })
+    .catch(err => {
+      console.log('Failed to retrieve articles: ', err)
+    });
+
+  axios.get('https://lambda-times-backend.herokuapp.com/articles')
+    .then(response => {
+      let articleData = response.data.articles.node;
+      console.log(articleData);
+      let cardContainer = document.querySelector('.cards-container');
+      articleData.forEach(item => {
+        cardContainer.appendChild(cardMaker(item));
+      })
+    })
+    .catch(err => {
+      console.log('Failed to retrieve articles: ', err)
+    })
 
 function cardMaker(obj) {
   const cardDiv = document.createElement('div');
