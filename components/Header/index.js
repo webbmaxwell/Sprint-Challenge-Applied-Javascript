@@ -31,4 +31,4 @@ function Header(obj) {
 }
 
 let headerContainer = document.querySelector('.header-container');
-headerContainer.appendChild(Header);
+headerContainer.appendChild(Header())
