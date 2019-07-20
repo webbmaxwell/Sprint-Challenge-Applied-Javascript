@@ -20,10 +20,10 @@
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
   .then(response => {
-    console.log(response)
+    // console.log(response)
   })
   .catch(err => {
-    console.log('Failed to retrieve articles: ', err)
+    // console.log('Failed to retrieve articles: ', err)
   })
 
 function cardMaker(obj) {

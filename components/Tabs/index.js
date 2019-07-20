@@ -12,15 +12,13 @@ const topicsArray = [];
 
 axios.get('https://lambda-times-backend.herokuapp.com/topics')
   .then(response => {
-    console.log(response.data)
-    const topicsData = response.data;
-    topicsData.topics.forEach(topic => {
-      topicsArray.push(topic.topics)
+    let newData = response.data.topics;
+    console.log(newData)
+    let topics = document.querySelector('.topics');
+    newData.forEach( () => {
+      topics.appendChild(Tabs(newData))
     })
 
-    topicsArray.forEach(item => {
-      bigDiv.appendChild(Tabs(item))
-    })
     // const cards2 = document.querySelector('.cards');
     //       cards2.appendChild(createCard(data.data));
 
@@ -30,12 +28,13 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
     console.log('could not retrieve topics', err)
   })
 
-const bigDiv = document.querySelector('.topics')
-
 function Tabs(obj) {
   let tabDiv = document.createElement('div');
   tabDiv.classList.add('tab');
-  // bigDiv.appendChild(tabDiv);
+  tabDiv.innerHTML = `${obj}`
 
-  return
+  return tabDiv
 }
+
+let topicsContainer = document.querySelector('.topics');
+// topicsContainer.appendChild(Tabs());
