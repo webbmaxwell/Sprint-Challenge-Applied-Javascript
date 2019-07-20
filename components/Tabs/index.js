@@ -15,13 +15,9 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
     let newData = response.data.topics;
     console.log(newData)
     let topics = document.querySelector('.topics');
-    newData.forEach( () => {
-      topics.appendChild(Tabs(newData))
+    newData.forEach( (item) => {
+      topics.appendChild(Tabs(item))
     })
-
-    // const cards2 = document.querySelector('.cards');
-    //       cards2.appendChild(createCard(data.data));
-
   })
 
   .catch(err => {
@@ -36,5 +32,5 @@ function Tabs(obj) {
   return tabDiv
 }
 
-let topicsContainer = document.querySelector('.topics');
+// let topicsContainer = document.querySelector('.topics');
 // topicsContainer.appendChild(Tabs());
